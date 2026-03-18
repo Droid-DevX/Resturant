@@ -51,7 +51,7 @@ export class ScrollController {
     // Split all `.split-text` elements
     const splitElements = document.querySelectorAll('.split-text');
     splitElements.forEach(el => {
-      new SplitType(el as HTMLElement, { types: 'lines, words, chars', tagName: 'span' });
+      new SplitType(el as HTMLElement, { types: 'lines,words,chars', tagName: 'span' });
     });
   }
 
@@ -83,8 +83,7 @@ export class ScrollController {
 
     const pathCurve = new THREE.CatmullRomCurve3(curvePoints);
 
-    // Set height to entire scrollable document size
-    const duration = document.body.scrollHeight;
+
 
     // Use ScrollTrigger mapped back to curve progression (0 to 1)
     ScrollTrigger.create({
@@ -229,7 +228,7 @@ export class ScrollController {
     });
 
     // Reveal steps
-    tastingSteps.forEach((step, i) => {
+    tastingSteps.forEach((step) => {
       gsap.to(step, {
         opacity: 1,
         y: 0,

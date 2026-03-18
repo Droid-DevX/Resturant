@@ -197,7 +197,6 @@ function createDetailedTable(): { group: THREE.Group, flame: THREE.Mesh } {
   const candleMat = new THREE.MeshStandardMaterial({
     color: 0xf5eedc,
     roughness: 0.8,
-    subsurface: true // Custom visual or just rely on tone mapping
   });
   const candle = new THREE.Mesh(candleGeo, candleMat);
   candle.position.set(0, 0.825 + 0.075, 0);

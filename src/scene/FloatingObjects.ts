@@ -36,15 +36,19 @@ export function createFloatingObjects(scene: THREE.Scene): FloatingObject[] {
 
   // 1. Croissant (Using Extrude/Tube abstraction)
   // We approximate a croissant using a thick TorusKnot or Custom Curve Tube
-  class CroissantCurve extends THREE.Curve<THREE.Vector3> {
-    getPoint(t: number, optionalTarget = new THREE.Vector3()) {
-      const x = Math.sin(Math.PI * t) * 0.3;
-      const y = Math.cos(Math.PI * t) * 0.1;
-      const z = Math.sin(Math.PI * t * 2) * 0.1; // Gentle curve
-      return optionalTarget.set(x, y, z);
-    }
-  }
-  const croissantGeo = new THREE.TubeGeometry(new CroissantCurve(), 32, 0.15, 16, false);
+  // class CroissantCurve extends THREE.Curve<THREE.Vector3> {
+  //   getPoint(t: number, optionalTarget = new THREE.Vector3()) {
+  //     const x = Math.sin(Math.PI * t) * 0.3;
+  //     const y = Math.cos(Math.PI * t) * 0.1;
+  //     const z = Math.sin(Math.PI * t * 2) * 0.1; // Gentle curve
+  //     return optionalTarget.set(x, y, z);
+  //   }
+  // }
+  const croissantGeo = new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(1, 1, 0),
+    new THREE.Vector3(2, 0, 0)
+  ]), 32, 0.15, 16, false);
   const croissant = new THREE.Mesh(croissantGeo, goldMaterial);
   croissant.scale.set(1.5, 1, 1);
   objects.push({

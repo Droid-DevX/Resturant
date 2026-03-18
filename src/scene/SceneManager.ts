@@ -1,11 +1,11 @@
 import * as THREE from 'three';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
-import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
-import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
-import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader';
-import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { VignetteShader } from 'three/examples/jsm/shaders/VignetteShader.js';
+import { BokehPass } from 'three/examples/jsm/postprocessing/BokehPass.js';
 
 export interface SceneManagerConfig {
   canvas: HTMLCanvasElement;
@@ -85,12 +85,7 @@ export class SceneManager {
     this.composer.addPass(bloomPass);
 
     // Film Grain Pass
-    const filmPass = new FilmPass(
-      0.35,  // noise intensity
-      0.025, // scanline intensity
-      648,   // scanline count
-      false  // grayscale
-    );
+    const filmPass = new FilmPass(0.35);
     this.composer.addPass(filmPass);
 
     // Cinematic Depth of Field (BokehPass)
@@ -98,8 +93,7 @@ export class SceneManager {
       focus: 10.0,
       aperture: 0.0001,
       maxblur: 0.015,
-      width: window.innerWidth,
-      height: window.innerHeight
+      
     });
     this.composer.addPass(this.bokehPass);
 
@@ -126,7 +120,7 @@ export class SceneManager {
 
   public updateFocus(distance: number): void {
      // Optional helper to dynamically tune DoF based on sections
-     (this.bokehPass.uniforms['focus'].value as number) = distance;
+     (this.bokehPass.uniforms as any)['focus'].value = distance;
   }
 
   private onResize(): void {

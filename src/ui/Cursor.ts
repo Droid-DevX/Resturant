@@ -4,8 +4,8 @@ export class Cursor {
   private element: HTMLElement;
   private label: HTMLElement;
   private dot: HTMLElement;
-  private xTo: gsap.QuickToFunc;
-  private yTo: gsap.QuickToFunc;
+  private xTo!: gsap.QuickToFunc;
+ private yTo!: gsap.QuickToFunc;
 
   constructor() {
     this.element = document.getElementById('cursor') as HTMLElement;
