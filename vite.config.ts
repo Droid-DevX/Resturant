@@ -5,8 +5,4 @@ export default defineConfig({
   base: "/Resturant/",
 
   plugins: [react()],
-  server: {
-    host: '[IP ADDRESS]',
-    port: 5173,
-  },
 });
