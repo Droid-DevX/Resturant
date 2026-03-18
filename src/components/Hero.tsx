@@ -3,7 +3,7 @@ export default function Hero() {
     <section id="hero" className="hero">
       <div className="hero__bg-layer">
         <img
-          src="/images/hero-bg.png"
+          src={`${import.meta.env.BASE_URL}images/hero-bg.png`}
           alt="Royal Indian cuisine"
           className="hero__bg-img"
           loading="eager"
