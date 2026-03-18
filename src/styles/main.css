@@ -388,6 +388,7 @@ img {
   transition: all var(--transition);
   position: relative;
   overflow: hidden;
+  z-index: 1;
 }
 .btn::before {
   content: '';
@@ -396,6 +397,7 @@ img {
   border-radius: 50px;
   opacity: 0;
   transition: opacity var(--transition);
+  z-index: -1;
 }
 .btn:hover::before {
   opacity: 1;
