@@ -13,7 +13,7 @@ export default function Popular() {
             <div key={dish.name} className="popular-card">
               <div className="popular-card__image-wrapper">
                 <img
-                  src={`${import.meta.env.BASE_URL}${dish.image.replace(/^\//, '')}`}
+                  src={`${import.meta.env.BASE_URL}${dish.image}`}
                   alt={dish.name}
                   className="popular-card__image"
                   loading="lazy"
